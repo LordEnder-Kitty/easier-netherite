@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherite:netherite_scrap_piece"
+    },
+    {
+      "item": "netherite:netherite_scrap_piece"
+    },
+    {
+      "item": "netherite:netherite_scrap_piece"
+    },
+    {
+      "item": "netherite:netherite_scrap_piece"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherite_scrap"
+  }
+}

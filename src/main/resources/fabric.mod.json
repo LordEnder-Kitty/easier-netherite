@@ -9,11 +9,10 @@
     "LordEnder_Kitty"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/LordEnder-Kitty/easy-netherite-fabric"
   },
 
-  "license": "MIT",
+  "license": "MIT License",
   "icon": "assets/netherite/textures/icon.png",
 
   "environment": "*",
@@ -29,7 +28,7 @@
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric-api": "*",
-    "minecraft": "~1.19.3",
+    "minecraft": "~1.19",
     "java": ">=17"
   },
   "suggests": {
