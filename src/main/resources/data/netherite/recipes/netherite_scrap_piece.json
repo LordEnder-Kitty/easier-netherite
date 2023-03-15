@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherite:nether_fragment"
+    }
+  },
+  "result": {
+    "item": "netherite:netherite_scrap_piece"
+  }
+}

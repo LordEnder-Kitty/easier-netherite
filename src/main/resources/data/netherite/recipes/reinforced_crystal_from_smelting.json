@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "ingredient": {
+    "item": "netherite:plated_diamond"
+  },
+  "result": "netherite:reinforced_crystal"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "netherite:block/block_of_reinforced_crystal"
+  }
+}

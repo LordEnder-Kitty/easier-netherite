@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 200,
+  "experience": 0.4,
+  "ingredient": {
+    "item": "netherite:celestial_crystal"
+  },
+  "result": "netherite:cracked_celestial_crystal"
+}
