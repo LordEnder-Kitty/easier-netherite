@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 200,
+  "experience": 0.4,
+  "ingredient": {
+    "item": "minecraft:end_crystal"
+  },
+  "result": "netherite:liquidized_end_crystal"
+}

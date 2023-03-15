@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherite:liquidized_end_crystal"
+    },
+    {
+      "item": "netherite:cracked_celestial_crystal"
+    }
+  ],
+  "result": {
+    "item": "netherite:nether_fragment"
+  }
+}

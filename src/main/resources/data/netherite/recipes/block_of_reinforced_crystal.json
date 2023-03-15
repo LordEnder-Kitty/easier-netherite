@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherite:hard_crystal_fragment"
+    }
+  },
+  "result": {
+    "item": "netherite:block_of_reinforced_crystal"
+  }
+}

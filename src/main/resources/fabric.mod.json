@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "netherite",
+  "version": "${version}",
+
+  "name": "Easy Netherite",
+  "description": "A mod that adds a few new blocks, items, crafting recipes, and a few other things to make netherite less boring and tedious to get wile keeping the difficulty",
+  "authors": [
+    "LordEnder_Kitty"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/LordEnder-Kitty/easy-netherite-fabric"
+  },
+
+  "license": "MIT",
+  "icon": "assets/netherite/textures/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.enderkitty.netherite.Netherite"
+    ]
+  },
+  "mixins": [
+    "netherite.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19.3",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
