@@ -1,31 +1,64 @@
 package net.enderkitty.netherite;
 
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
+import com.mojang.logging.LogUtils;
+import net.enderkitty.netherite.block.ModBlocks;
+import net.enderkitty.netherite.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class Netherite implements ModInitializer {
-	public static final String MOD_ID = "netherite";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+// The value here should match an entry in the META-INF/mods.toml file
+@Mod(Netherite.MOD_ID)
+public class Netherite {
+    // Define mod id in a common place for everything to reference
+    public static final String MOD_ID = "netherite";
+    // Directly reference a slf4j logger
+    private static final Logger LOGGER = LogUtils.getLogger();
 
-	@Override
-	public void onInitialize() {
-		ModObjects.registerModObjects();
+    public Netherite() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
-			content.addAfter(Items.NETHERITE_INGOT, ModObjects.PLATED_DIAMOND);
-			content.addAfter(ModObjects.PLATED_DIAMOND, ModObjects.REINFORCED_CRYSTAL);
-			content.addAfter(ModObjects.REINFORCED_CRYSTAL, ModObjects.CELESTIAL_CRYSTAL);
-			content.addAfter(ModObjects.CELESTIAL_CRYSTAL, ModObjects.CRACKED_CELESTIAL_CRYSTAL);
-			content.addAfter(ModObjects.CRACKED_CELESTIAL_CRYSTAL, ModObjects.HARD_CRYSTAL_FRAGMENT);
-			content.addAfter(ModObjects.HARD_CRYSTAL_FRAGMENT, ModObjects.LIQUIDIZED_END_CRYSTAL);
-			content.addAfter(ModObjects.LIQUIDIZED_END_CRYSTAL, ModObjects.NETHER_FRAGMENT);
-			content.addAfter(ModObjects.NETHER_FRAGMENT, ModObjects.NETHERITE_SCRAP_PIECE);
-			content.addAfter(ModObjects.NETHERITE_SCRAP_PIECE, ModObjects.REINFORCED_CRYSTAL_DUST);
-			content.addAfter(ModObjects.REINFORCED_CRYSTAL_DUST, ModObjects.BLOCK_OF_REINFORCED_CRYSTAL);
-		});
-	}
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        modEventBus.addListener(this::commonSetup);
+
+        MinecraftForge.EVENT_BUS.register(this);
+
+        modEventBus.addListener(this::addCreative);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+    }
+
+    private void addCreative(CreativeModeTabEvent.BuildContents event) {
+        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModBlocks.BLOCK_OF_REINFORCED_CRYSTAL);
+            event.accept(ModItems.PLATED_DIAMOND);
+            event.accept(ModItems.CELESTIAL_CRYSTAL);
+            event.accept(ModItems.CRACKED_CELESTIAL_CRYSTAL);
+            event.accept(ModItems.HARD_CRYSTAL_FRAGMENT);
+            event.accept(ModItems.LIQUIDIZED_END_CRYSTAL);
+            event.accept(ModItems.REINFORCED_CRYSTAL);
+            event.accept(ModItems.REINFORCED_CRYSTAL_DUST);
+            event.accept(ModItems.NETHER_FRAGMENT);
+            event.accept(ModItems.NETHERITE_SCRAP_PIECE);
+        }
+    }
+
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+        }
+    }
 }
